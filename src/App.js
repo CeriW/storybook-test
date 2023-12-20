@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App({ props }) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div id="deliveries-widget">
+        <div
+          className="deliveries-widget__row-1"
+          under-min-spend={props.underMinSpend ? 'true' : 'false'}
+          order-status-ok={props.orderStatusOK ? 'true' : 'false'}
+          basket-is-empty={props.basketIsEmpty ? 'true' : 'false'}
         >
-          Learn React
-        </a>
-      </header>
+          {props.underMinSpend && <div>You're under min spend</div>}
+          {props.orderStatusOK && <div>Your order is confirmed</div>}
+          {props.basketIsEmpty && <div>Your basket is empty</div>}
+        </div>
+      </div>
     </div>
   );
 }
